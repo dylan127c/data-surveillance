@@ -96,3 +96,6 @@ src/chromium/
 
 # Verification
 src/verification.*
+
+# Technical Difficulties
+tech difficulties.md
