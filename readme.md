@@ -1,4 +1,4 @@
-<div align="center"><h2>Data Surveillance</h2></div>
+<div align="center"><h1>Data Surveillance</h1></div>
 
 <div align="center"><img src="images/readme.images/favicon.png" alt="favicon" style="width:20%;" /></div>
 
