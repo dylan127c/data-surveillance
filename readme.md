@@ -37,8 +37,8 @@ npm i puppeteer # Downloads compatible Chrome during installation.
 
 | 程序状态 |                           图标指示                           |
 | :------: | :----------------------------------------------------------: |
-|  空闲中  | <img src="images/readme.images/tray-stop.png" alt="tray-stop" style="width:10%;" /> |
-|  运行中  | <img src="images/readme.images/tray-run.png" alt="tray-run" style="width:10%;" /> |
+|  空闲中  | <img src="images/readme.images/tray-stop.png" alt="tray-stop" style="zoom:100%;" /> |
+|  运行中  | <img src="images/readme.images/tray-run.png" alt="tray-run" style="zoom:100%;" /> |
 
 ### 说明
 
