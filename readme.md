@@ -1,6 +1,6 @@
 <div align="center"><h2>Data Surveillance</h2></div>
 
-<div align="center"><img src="images/readme.images/favicon.png" alt="favicon" style="width:12%;" /></div>
+<div align="center"><img src="images/readme.images/favicon.png" alt="favicon" style="width:20%;" /></div>
 
 Data Surveillance 能够登录并抓取目标网址上的信息，并在主程序的 Message 区域上展示这些信息。
 
@@ -23,7 +23,7 @@ npm start -dev
 
 使用标题栏中的悬浮按钮，可以启用小窗置顶模式，以显示 Message 区域信息：
 
-<div align="center"><img src="images/readme.images/Snipaste_2024-09-12_04-43-31.png" alt="Snipaste_2024-09-12_04-43-31" style="width:10%;" /></div>
+<div align="center"><img src="images/readme.images/Snipaste_2024-09-12_04-43-31.png" alt="Snipaste_2024-09-12_04-43-31" style="width:8%;" /></div>
 
 ### 框架
 
