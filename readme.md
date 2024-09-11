@@ -1,6 +1,6 @@
 <div align="center"><h2>Data Surveillance</h2></div>
 
-<img src="images/readme.images/favicon.png" alt="favicon" style="zoom:80%;" />
+<div align="center"><img src="images/readme.images/favicon.png" alt="favicon" style="width:12%;" /></div>
 
 Data Surveillance 能够登录并抓取目标网址上的信息，并在主程序的 Message 区域上展示这些信息。
 
