@@ -99,3 +99,7 @@ src/verification.*
 
 # Technical Difficulties
 tech difficulties.md
+
+# Settings
+globals.json
+params.json

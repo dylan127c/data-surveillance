@@ -5,49 +5,19 @@ import puppeteer, { Browser, ElementHandle, Page } from 'puppeteer';
 import { getTime } from './utils/dateUtil';
 import { verify } from './verification';
 
-/** 用于检查伪加载状态的选择器 */
-const MASK_CONTENT_SELECT = "div#maskcontent";
-/** 用于检查伪加载覆盖的选择器 */
-const MASK_OVERLAY_SELECT = "div#mask-img";
-/** 用于查找记录诉求、催单或投诉数量元素的选择器 */
-const ROWS_COUNTER_SELECT = "span#s_1_rc.siebui-row-counter";
-/** 用于查找下拉列表元素的选择器 */
-const DROP_OPTIONS_SELECT = "select[title='已保存的查询'] option";
-/** 用于检查是否存在登录错误元素的选择器 */
-const WHAT_RESULTS_SELECT = "div#statusBar";
+import params from "../params.json";
+import globals from "../globals.json";
 
-const params = {
-    logon: {
-        nameSelect: "input[title='用户 ID']",
-        codeSelect: "input[title='密码']",
-        signSelect: "img[alt='登录']",
-    },
-    page: {
-        mainSelect: "span[title='诉求']"
-    },
-    request: {
-        target: "a[data-tabindex='tabView0']",
-        verify: "li[aria-label='诉求单列表 已选择']",
-        option: "未处理紧急诉求（本日）",
-        output: "诉求 - 未处理紧急诉求（本日）",
-    },
-    grumble: {
-        target: "a[data-tabindex='tabView2']",
-        verify: "li[aria-label='投诉 已选择']",
-        output: "投诉 - 本日创建的诉求（新建）",
-        prefix: "_s_1_l_FT_Process_Status",
-    },
-    exigent: {
-        target: "a[data-tabindex='tabView8']",
-        verify: "li[aria-label='催单记录 已选择']",
-        output: "催单 - 当日催单诉求（未处理）",
-        prefix: "_s_1_l_FT_Collection_Result",
-    },
-    logout: {
-        settingSelect: "li[title='设置']",
-        signoutSelect: "button[un='注销']",
-    }
-};
+/** 用于检查伪加载状态的选择器 */
+const MASK_CONTENT_SELECT = globals.mask_content;
+/** 用于检查伪加载覆盖的选择器 */
+const MASK_OVERLAY_SELECT = globals.mask_overlay;
+/** 用于查找记录诉求、催单或投诉数量元素的选择器 */
+const ROWS_COUNTER_SELECT = globals.rows_counter;
+/** 用于查找下拉列表元素的选择器 */
+const DROP_OPTIONS_SELECT = globals.drop_options;
+/** 用于检查是否存在登录错误元素的选择器 */
+const WHAT_RESULTS_SELECT = globals.what_results;
 
 /** 日志类型指示，同时作为日志内容输出 */
 const TYPE = {
@@ -324,7 +294,7 @@ async function logon(url: string, username: string, passcode: string) {
                 await page.waitForSelector(WHAT_RESULTS_SELECT, { timeout: 1000 })
                     .then(async () => {
                         // *.查询是不是登录失败
-                        const divStatus = await page.$(WHAT_RESULTS_SELECT);
+                        const divStatus = await page.$(WHAT_RESULTS_SELECT) as ElementHandle<HTMLDivElement>;
                         const textStatusHandle = await page.evaluateHandle(el => el?.innerText, divStatus);
 
                         // *.函数 jsonValue 返回一个 Promise 对象，需要使用 await 等待该函数返回一个 string 类型值
@@ -430,10 +400,13 @@ async function request() {
         // *.查询[今日诉求]，模拟选择下拉菜单
         await page.$$eval(DROP_OPTIONS_SELECT, (options, params) => {
             return options.forEach(option => {
-                if (option.innerText === params.request.option) {
-                    option.selected = true;
-                    option.click();
-                    return;
+                // TODO: DROP_OPTIONS_SELECT 配置抽取出来后，使用 instanceof 配合 TypeScript 的类型检查
+                if (option instanceof HTMLOptionElement) {
+                    if (option.innerText === params.request.option) {
+                        option.selected = true;
+                        option.click();
+                        return;
+                    }
                 }
             })
         }, params).catch(error => {
@@ -444,7 +417,7 @@ async function request() {
 
         // *.检查[今日诉求]页面是否加载完毕
         for (let loop = 0; loop < 10; loop++) {
-            const divStatus = await page.$(MASK_CONTENT_SELECT);
+            const divStatus = await page.$(MASK_CONTENT_SELECT) as ElementHandle<HTMLDivElement>;
             const textStatusHandle = await page.evaluateHandle(el => el?.innerText, divStatus);
 
             // *.函数 jsonValue 返回一个 Promise 对象，需要使用 await 等待该函数返回一个 string 类型值
@@ -457,7 +430,7 @@ async function request() {
         }
 
         // *.输出[诉求结果]
-        const spanRequest = await page.$(ROWS_COUNTER_SELECT);
+        const spanRequest = await page.$(ROWS_COUNTER_SELECT) as ElementHandle<HTMLSpanElement>;
         const textRequestHandle = await page.evaluateHandle(el => el?.innerText, spanRequest);
         const textRequest = textRequestHandle.toString();
 
@@ -496,7 +469,7 @@ async function grumble() {
             });
 
         // *.输出[投诉结果]
-        const spanGrumble = await page.$(ROWS_COUNTER_SELECT);
+        const spanGrumble = await page.$(ROWS_COUNTER_SELECT) as ElementHandle<HTMLSpanElement>;
         const textGrumbleHandle = await page.evaluateHandle(el => el?.innerText, spanGrumble);
         const textGrumble = textGrumbleHandle.toString();
 
@@ -546,7 +519,7 @@ async function exigent() {
             });
 
         // *.输出[催单结果]
-        const spanExigent = await page.$(ROWS_COUNTER_SELECT);
+        const spanExigent = await page.$(ROWS_COUNTER_SELECT) as ElementHandle<HTMLSpanElement>;
         const textExigentHandle = await page.evaluateHandle(el => el?.innerText, spanExigent);
         const textExigent = textExigentHandle.toString();
 
