@@ -25,7 +25,7 @@ onMounted(() => {
 });
 
 watch(messages, () => {
-    // *.当 messages 数组发生变化时，滚动到最底部
+    // *.当 messages 数组发生变化时，滚动到最底部
     scrollToBottom();
 });
 
@@ -60,7 +60,7 @@ div#process-container {
     border-radius: 6px;
     box-shadow: 0px 0px 1px 1px #f8f9fe;
 
-    /* 同级 flex 元素固定，那么此样式行为的表现将相反 */
+    /* 同级 flex 元素固定，那么此样式行为的表现将相反 */
     margin: 5px;
     padding-bottom: 2px;
 

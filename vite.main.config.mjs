@@ -28,14 +28,14 @@ export default defineConfig((env) => {
     },
     plugins: [pluginHotRestart('restart'),
     /**
-     * 项目打包时 src/assets 内的资源不会同步至 .vite/build 目录，
-     * 然而项目本身依赖 src/assets 内的资源（如果异常）。
+     * 项目打包时 src/assets 内的资源不会同步至 .vite/build 目录，
+     * 然而项目本身依赖 src/assets 内的资源（如果异常）。
      * 
-     * 可选使用与 src 目录同级的 public 公共目录存储资源，这样资源
+     * 可选使用与 src 目录同级的 public 公共目录存储资源，这样资源
      * 会自动被打包，不过会出现被打包双份的奇怪情况。
      * 
-     * 这里推荐使用 rollup-plugin-copy 插件，它主要的功能是可以
-     * 将指定目录复制到 .vite/build 目录下。
+     * 这里推荐使用 rollup-plugin-copy 插件，它主要的功能是可以
+     * 将指定目录复制到 .vite/build 目录下。
      */
     copy({
       targets: [

@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import { pluginExposeRenderer } from './vite.base.config.mjs';
 
-// *.Electron 整合 Vue3 框架
+// *.Electron 整合 Vue3 框架
 import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config
@@ -19,8 +19,8 @@ export default defineConfig((env) => {
     build: {
       outDir: `.vite/renderer/${name}`,
 
-      // *.如果存在多个窗体对象对应多个首页，那么只需要配置 rollupOptions 指定资源位置
-      // *.不对窗体对象的首页资源进行映射，Electron-Forge 就只会打包 index.html 所相关的资源
+      // *.如果存在多个窗体对象对应多个首页，那么只需要配置 rollupOptions 指定资源位置
+      // *.不对窗体对象的首页资源进行映射，Electron-Forge 就只会打包 index.html 所相关的资源
       rollupOptions: {
         input: {
           // *.main.js => mainWindow
@@ -33,7 +33,7 @@ export default defineConfig((env) => {
     plugins: [
       pluginExposeRenderer(name),
 
-      // *.添加 vue() 插件以整合 Vue3 框架
+      // *.添加 vue() 插件以整合 Vue3 框架
       vue()
     ],
     resolve: {

@@ -5,10 +5,10 @@ import Options from './components/Options.vue';
 </script>
 
 <!-- 
-    进行 Vue 布局设计时，就应当把所有的网页元素布局在 App.vue 文件中，即开始
-    就应该把 Title.vue 纳入 App.vue 中，并只在 index.html 中引入 App.vue。
+    进行 Vue 布局设计时，就应当把所有的网页元素布局在 App.vue 文件中，即开始
+    就应该把 Title.vue 纳入 App.vue 中，并只在 index.html 中引入 App.vue。
 
-    如果一开始就将 Title.vue 纳入，即可通过 Title.vue 上的元素来控制整个页面
+    如果一开始就将 Title.vue 纳入，即可通过 Title.vue 上的元素来控制整个页面
     元素的显示/隐藏。
 -->
 

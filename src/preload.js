@@ -1,8 +1,8 @@
 /**
- * 出于安全性考虑，Vue 中不允许直接使用 Electron 相关的 API，如 ipcRenderer 等。
- * 这里的 preload.js 充当了 Electron 和 Vue 之间的通信桥梁。
+ * 出于安全性考虑，Vue 中不允许直接使用 Electron 相关的 API，如 ipcRenderer 等。
+ * 这里的 preload.js 充当了 Electron 和 Vue 之间的通信桥梁。
  * 
- * Vue 中可以访问 Electron 环境内的 window 全局对象，使用该对象可以建立他们之间的通讯：
+ * Vue 中可以访问 Electron 环境内的 window 全局对象，使用该对象可以建立他们之间的通讯：
  * 
  * - Vue => Electron: 
  *      - window.apiKey.api(..) => ipcRenderer.send(..) => ipcMain.on(..)

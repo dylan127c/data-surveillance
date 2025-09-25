@@ -19,14 +19,14 @@ window.correspond.messageReceiver(value => {
     }
     messages.push(value);
 
-    // *.播放提示音，提示音模块（元素）固定在了 index.html 页面
+    // *.播放提示音，提示音模块（元素）固定在了 index.html 页面
     if (!new RegExp(": 0").test(value)) {
         const muteStatus = localStorage.getItem("src");
         if (muteStatus !== null && muteStatus.includes("/unmute.png")) {
             eleAudio.play();
         }
     }
-    // *.将消息同步到 MessageMini.vue 页面
+    // *.将消息同步到 MessageMini.vue 页面
     window.correspond.messageSender(value);
 });
 

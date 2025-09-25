@@ -5,20 +5,20 @@ module.exports = {
   packagerConfig: {
     asar: true,
     /**
-     * 项目需要将 Puppeteer 所需的浏览器组件一并打包，实际上能够通过 rollup-plugin-copy 插件
-     * 打包浏览器组件至 app.asar 压缩文件内。
+     * 项目需要将 Puppeteer 所需的浏览器组件一并打包，实际上能够通过 rollup-plugin-copy 插件
+     * 打包浏览器组件至 app.asar 压缩文件内。
      * 
-     * 但遗憾的是 Puppeteer 无法使用 app.asar 文件内的浏览器组件，因此需要另辟蹊径。这里选择将
-     * 浏览器组件打包至项目的 resources 目录中。
+     * 但遗憾的是 Puppeteer 无法使用 app.asar 文件内的浏览器组件，因此需要另辟蹊径。这里选择将
+     * 浏览器组件打包至项目的 resources 目录中。
      * 
-     *  生产环境内 Puppeteer 引用路径：./resources/chromium/chrome-headless-shell.exe
+     *  生产环境内 Puppeteer 引用路径：./resources/chromium/chrome-headless-shell.exe
      */
     extraResource: [
       "./src/chromium",
     ],
     name: "Data Surveillance",
     // *.程序会自动检测系统类型
-    // *.Windows 系统下后缀 .ico 会自动被添加
+    // *.Windows 系统下后缀 .ico 会自动被添加
     icon: "./src/assets/icons/favicon"
   },
   rebuildConfig: {},

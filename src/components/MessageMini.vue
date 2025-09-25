@@ -11,12 +11,12 @@ import { reactive } from 'vue';
 const messages = reactive([]);
 const maxMessages = 10;
 
-// *.监听来自 Message.vue 的消息
+// *.监听来自 Message.vue 的消息
 window.correspond.messageReceiver(value => {
     if (messages.length >= maxMessages) {
         messages.shift();
     }
-    // *.Mini 窗口显示的消息较短，原消息需要执行裁剪
+    // *.Mini 窗口显示的消息较短，原消息需要执行裁剪
     messages.push(value.replace(/\s-.+(?=:)/, ""));
 });
 

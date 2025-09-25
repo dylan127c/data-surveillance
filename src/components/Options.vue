@@ -50,7 +50,7 @@ const passcode = ref(localStorage.getItem("passcode") || "");
 
 const pointerEvents = ref("none");
 
-// *.Vue 实现 hover 效果
+// *.Vue 实现 hover 效果
 const warnColor = "#d42020";
 const hoverWarnColor = "#cd2d22";
 const infoColor = "#299134";
@@ -105,12 +105,12 @@ function toggleStartProcess() {
         isSetupDisabled.value = !isSetupDisabled.value;
     } else {
         stopLogic();
-        // *.主动终止，需通知 main.js 执行终止程序
+        // *.主动终止，需通知 main.js 执行终止程序
         window.correspond.stop();
     }
 }
 
-// *.非主动调用 sniff.terminate 的情况也应该 disable 所有的按钮
+// *.非主动调用 sniff.terminate 的情况也应该 disable 所有的按钮
 // *.此监听器会监听被动终止程序的信息，以禁用所有相关按钮，避免用户误操作
 window.correspond.optionsReceiver(value => {
     if (value === "dylan127c") {

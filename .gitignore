@@ -103,3 +103,9 @@ tech difficulties.md
 # Settings
 globals.json
 params.json
+
+### VS Code ###
+.vscode
+
+### IntelliJ IDEA ###
+.idea
