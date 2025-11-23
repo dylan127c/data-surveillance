@@ -408,7 +408,8 @@ async function request() {
             return options.forEach(option => {
                 // TODO: DROP_OPTIONS_SELECT 配置抽取出来后，使用 instanceof 配合 TypeScript 的类型检查
                 if (option instanceof HTMLOptionElement) {
-                    if (option.innerText === params.request.option) {
+                    if (option.innerText === params.request.option ||
+                        option.innerText === params.request.optionElse) {
                         option.selected = true;
                         option.click();
                         return;
